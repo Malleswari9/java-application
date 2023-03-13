@@ -3,6 +3,7 @@ version: 0.2
 phases:
   pre_build:
     commands:
+      - apt-get update && apt-get -y install jq python3-pip python3-dev && pip3 install --upgrade awscli
       - $(aws ecr get-login --no-include-email --region ap-south-1)
   build:
     commands:
