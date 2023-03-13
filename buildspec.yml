@@ -1,0 +1,15 @@
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+      - $(aws ecr get-login --no-include-email --region ap-south-1)
+  build:
+    commands:
+      - docker build -t 321019347814.dkr.ecr.ap-south-1.amazonaws.com/demo-output .
+      - docker tag demo-output:latest 321019347814.dkr.ecr.ap-south-1.amazonaws.com/demo-output:latest
+  post_build:
+    commands:
+      - docker push docker push 321019347814.dkr.ecr.ap-south-1.amazonaws.com/demo-output:latest
+artifacts:
+  files: build.json
