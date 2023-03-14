@@ -6,7 +6,7 @@ phases:
       - aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 321019347814.dkr.ecr.ap-south-1.amazonaws.com
   build:
     commands:
-      - docker run -v /var/run/docker.sock:/var/run/docker.sock -ti test
+      - nohup /usr/local/bin/dockerd --host=unix:///var/run/docker.sock --host=tcp://172.17.0.1:2375
       - docker build -t 321019347814.dkr.ecr.ap-south-1.amazonaws.com/demo-output .
       - docker tag demo-output:latest 321019347814.dkr.ecr.ap-south-1.amazonaws.com/demo-output:latest
   post_build:
