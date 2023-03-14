@@ -1,9 +1,9 @@
 version: 0.2
 
 phases:
-  pre_build:
-    commands:
-      - aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 321019347814.dkr.ecr.ap-south-1.amazonaws.com
+#  pre_build:
+#    commands:
+#       - aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 321019347814.dkr.ecr.ap-south-1.amazonaws.com
   build:
     commands:
       - nohup /usr/local/bin/dockerd --host=unix:///var/run/docker.sock --host=tcp://127.0.0.1:2375
